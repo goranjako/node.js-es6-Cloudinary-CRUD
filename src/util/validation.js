@@ -40,12 +40,7 @@ const validateLoginBody = () => {
   ];
 };
 
-const Todovalidate = () => {
-  return [
-    body("id").exists().withMessage("id is required"),
-    body("item").exists().withMessage("item field is required"),
-  ];
-};
+
 
 const validate = (req, res, next) => {
   const errors = validationResult(req);
@@ -63,6 +58,5 @@ const validate = (req, res, next) => {
 module.exports = {
   validateRegistrationBody,
   validateLoginBody,
-  Todovalidate,
   validate,
 };

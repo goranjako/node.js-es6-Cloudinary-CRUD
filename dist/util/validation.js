@@ -25,10 +25,6 @@ var validateLoginBody = function validateLoginBody() {
   }).withMessage("password must be in between 8 to 12 characters long")];
 };
 
-var Todovalidate = function Todovalidate() {
-  return [body("id").exists().withMessage("id is required"), body("item").exists().withMessage("item field is required")];
-};
-
 var validate = function validate(req, res, next) {
   var errors = validationResult(req);
 
@@ -48,6 +44,5 @@ var validate = function validate(req, res, next) {
 module.exports = {
   validateRegistrationBody: validateRegistrationBody,
   validateLoginBody: validateLoginBody,
-  Todovalidate: Todovalidate,
   validate: validate
 };

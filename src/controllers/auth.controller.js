@@ -1,4 +1,4 @@
-import authService from "../services/authservice";
+import authService from "../services/auth.service";
 const jwt = require("jsonwebtoken");
 import User from "../models/user";
 import dotenv from "dotenv";
