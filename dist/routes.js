@@ -11,6 +11,10 @@ var _express = _interopRequireDefault(require("express"));
 
 var _auth = _interopRequireDefault(require("./controllers/auth.controller"));
 
+var _gallery = require("./controllers/gallery.controller");
+
+var _auth2 = _interopRequireDefault(require("./util/auth"));
+
 var _require = require('./util/validation'),
     validateRegistrationBody = _require.validateRegistrationBody,
     validateLoginBody = _require.validateLoginBody,
@@ -23,5 +27,6 @@ function setRoutes(app) {
 
   router.post("/register", validateRegistrationBody(), validate, _auth["default"].register);
   router.post("/login", validateLoginBody(), validate, _auth["default"].login);
+  router.route('/image').post(_auth2["default"].verifyToken, _gallery.upload.single('image'), _gallery.create);
   app.use('/', router);
 }

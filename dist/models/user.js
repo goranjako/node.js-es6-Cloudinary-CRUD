@@ -24,7 +24,7 @@ var UserSchema = new Schema({
     unique: true,
     trim: true,
     // Regexp to validate emails with more strict rules as added in tests/users.js which also conforms mostly with RFC2822 guide lines
-    match: [/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,3}))$/, 'Please enter a valid email']
+    match: [/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,3}))$/, "Please enter a valid email"]
   },
   password: {
     type: String,
@@ -33,10 +33,10 @@ var UserSchema = new Schema({
     trim: true
   }
 });
-UserSchema.pre('save', function (next) {
+UserSchema.pre("save", function (next) {
   var user = this;
 
-  if (this.isModified('password') || this.isNew) {
+  if (this.isModified("password") || this.isNew) {
     _bcryptNodejs["default"].genSalt(10, function (err, salt) {
       if (err) {
         return next(err);
@@ -66,6 +66,6 @@ UserSchema.methods.comparePassword = function (passw, cb) {
   });
 };
 
-var _default = _mongoose["default"].model('User', UserSchema);
+var _default = _mongoose["default"].model("User", UserSchema);
 
 exports["default"] = _default;
