@@ -15,6 +15,9 @@ image: {
     type: String,
     required: true
   },
+  cloudinary_id: {
+    type: String,
+  },
 
 
 });

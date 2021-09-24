@@ -18,6 +18,9 @@ var GallerySchema = new Schema({
   categories: {
     type: String,
     required: true
+  },
+  cloudinary_id: {
+    type: String
   }
 });
 module.exports = _mongoose["default"].model('Gallery', GallerySchema);
