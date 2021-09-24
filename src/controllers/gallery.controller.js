@@ -5,9 +5,9 @@ import GalleryService from "../services/gallery.service";
 
 
 cloudinary.config({
-  cloud_name: "goran",
-  api_key: "347353919781489",
-  api_secret: "9zIoxCx6DNflw27IuzgWk84lzK0",
+  cloud_name: "***Your cloud_name*** ",
+  api_key: "***Your api_key***",
+  api_secret: "Your api_secret**",
 });
 
 const storage = new CloudinaryStorage({
