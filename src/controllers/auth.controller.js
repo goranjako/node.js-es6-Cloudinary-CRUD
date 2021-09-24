@@ -43,12 +43,10 @@ class Auth {
         if (err) throw err;
 
         if (!user) {
-          res
-            .status(401)
-            .send({
-              success: false,
-              msg: "Authentication failed. User not found.",
-            });
+          res.status(401).send({
+            success: false,
+            msg: "Authentication failed. User not found.",
+          });
         } else {
           // check if password matches
           user.comparePassword(req.body.password, (err, isMatch) => {
@@ -58,14 +56,16 @@ class Auth {
                 expiresIn: "10m",
               });
               // return the information including token as JSON
-             return  res.json({success: true, msg:'Successful login', token: token});
+              return res.json({
+                success: true,
+                msg: "Successful login",
+                token: token,
+              });
             } else {
-            return  res
-                .status(422)
-                .send({
-                  success: false,
-                  msg: "Authentication failed. Wrong password.",
-                });
+              return res.status(422).send({
+                success: false,
+                msg: "Authentication failed. Wrong password.",
+              });
             }
           });
         }

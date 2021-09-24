@@ -3,13 +3,11 @@ const { CloudinaryStorage } = require("multer-storage-cloudinary");
 import multer from "multer";
 import GalleryService from "../services/gallery.service";
 
-
 cloudinary.config({
   cloud_name: "***Your cloud_name*** ",
   api_key: "***Your api_key***",
   api_secret: "Your api_secret**",
 });
-
 const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
 });
@@ -62,9 +60,9 @@ class GalleryController {
     try {
       const image = req.params;
       const obj = await GalleryService.imageId({ _id: image.id });
-       // Delete image from cloudinary
-      await cloudinary.uploader.destroy({cloudinary_id:obj.cloudinary_id});
-      const delet = await GalleryService.delete({ _id: image.id }); 
+      // Delete image from cloudinary
+      await cloudinary.uploader.destroy({ cloudinary_id: obj.cloudinary_id });
+      const delet = await GalleryService.delete({ _id: image.id });
       return res.json({
         success: true,
         msg: "Image is Deleted successfully.",
