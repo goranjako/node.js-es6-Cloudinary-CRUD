@@ -9,7 +9,7 @@ class authManager {
       const token = authHeader && authHeader.split(' ')[1];
       if (token == null) return res.status(401).json({ message: "No token provided!" }); // if there isn't any token
 
-      jwt.verify(token, process.env.SECRET_KEY, (err, user) => {
+      jwt.verify(token, process.env.SECRET_TOKEN, (err, user) => {
         console.log(err)
         if (err) return res.status(403).json({ success: false, msg: 'Unauthorized.' });
         req.user = user

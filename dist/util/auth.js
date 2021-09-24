@@ -50,7 +50,7 @@ var authManager = /*#__PURE__*/function () {
 
               case 7:
                 // if there isn't any token
-                jwt.verify(token, process.env.SECRET_KEY, function (err, user) {
+                jwt.verify(token, process.env.SECRET_TOKEN, function (err, user) {
                   console.log(err);
                   if (err) return res.status(403).json({
                     success: false,
